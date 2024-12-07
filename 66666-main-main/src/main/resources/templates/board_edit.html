@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="UTF-8">
+    <title>블로그게시판</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+    <div class="container">
+        <h1 class="mt-5">블로그게시판</h1>
+        <div class="mt-4">
+            <h2>게시글을 수정 합니다.</h2>
+            <form th:action="@{/api/article_edit/{id}(id=${article.id})}" method="post" name="content">
+                <input type="hidden" name="_method" value="put">
+                <div class="form-group">
+                    <label for="title">제목:</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">내용:</label>
+                    <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">수정</button>
+            </form>
+        </div>
+        <div class="mt-5">
+            <h2>수정할 내용</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
+                        <th>조회수</th>
+                        <th>좋아요</th>
+                       
+                    </tr>
+                    
+                </thead>
+                    <tbody>
+                        <td th:text="${board.title}"></td>
+                        <td th:text="${board.user}"></td>
+                        <td th:text="${board.newdate}"></td>
+                        <td th:text="${board.count}"></td>
+                        <td th:text="${board.likec}"></td>
+                        
+                        </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </body>
+    
+        
+    </html>
